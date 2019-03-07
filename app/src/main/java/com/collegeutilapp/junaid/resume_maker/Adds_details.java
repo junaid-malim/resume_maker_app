@@ -19,7 +19,7 @@ public class Adds_details extends AppCompatActivity implements TabLayout.OnTabSe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adds_details);
 
-//Adding toolbar to the activity
+        //Adding toolbar to the activity
         Toolbar toolbar = findViewById(R.id.toolbar);
 
         //Initializing the tablayout
