@@ -44,54 +44,10 @@ public class Model {
 
     }
 
-    public void set_slh(String skill,String lang,String hobbies){
 
-        skills_list.add(skill);
-        lang_list.add(lang);
-        hobbies_list.add(hobbies);
-    }
 
     //TODO getter method remains
 
-    public List getLang_list() {
-        return lang_list;
-    }
-
-    public void setLang_list(List lang_list) {
-        this.lang_list = lang_list;
-    }
-
-    public List getSkills_list() {
-        return skills_list;
-    }
-
-    public void setSkills_list(List skills_list) {
-        this.skills_list = skills_list;
-    }
-
-    public List getHobbies_list() {
-        return hobbies_list;
-    }
-
-    public void setHobbies_list(List hobbies_list) {
-        this.hobbies_list = hobbies_list;
-    }
-
-    public List getEmp_history_time() {
-        return emp_history_time;
-    }
-
-    public void setEmp_history_time(ArrayList emp_history_time) {
-        this.emp_history_time = emp_history_time;
-    }
-
-    public List getEmp_history_role() {
-        return emp_history_role;
-    }
-
-    public void setEmp_history_role(ArrayList emp_history_role) {
-        this.emp_history_role = emp_history_role;
-    }
 
     public String getName() {
         return name;
@@ -123,6 +79,14 @@ public class Model {
 
     public void setRes_address(String res_address) {
         this.res_address = res_address;
+    }
+
+    public String getPersonaldiscr() {
+        return personaldiscr;
+    }
+
+    public void setPersonaldiscr(String personaldiscr) {
+        this.personaldiscr = personaldiscr;
     }
 
     public String getGrade10total() {
@@ -189,19 +153,51 @@ public class Model {
         this.postgradscored = postgradscored;
     }
 
-    public String getPersonaldiscr() {
-        return personaldiscr;
-    }
-
-    public void setPersonaldiscr(String personaldiscr) {
-        this.personaldiscr = personaldiscr;
-    }
-
-    public List getEmp_history_company() {
+    public ArrayList<String> getEmp_history_company() {
         return emp_history_company;
     }
 
-    public void setEmp_history_company(ArrayList emp_history_company) {
+    public void setEmp_history_company(ArrayList<String> emp_history_company) {
         this.emp_history_company = emp_history_company;
+    }
+
+    public ArrayList<String> getEmp_history_time() {
+        return emp_history_time;
+    }
+
+    public void setEmp_history_time(ArrayList<String> emp_history_time) {
+        this.emp_history_time = emp_history_time;
+    }
+
+    public ArrayList<String> getEmp_history_role() {
+        return emp_history_role;
+    }
+
+    public void setEmp_history_role(ArrayList<String> emp_history_role) {
+        this.emp_history_role = emp_history_role;
+    }
+
+    public List getSkills_list() {
+        return skills_list;
+    }
+
+    public void setSkills_list(List skills_list) {
+        this.skills_list = skills_list;
+    }
+
+    public List getHobbies_list() {
+        return hobbies_list;
+    }
+
+    public void setHobbies_list(List hobbies_list) {
+        this.hobbies_list = hobbies_list;
+    }
+
+    public List getLang_list() {
+        return lang_list;
+    }
+
+    public void setLang_list(List lang_list) {
+        this.lang_list = lang_list;
     }
 }

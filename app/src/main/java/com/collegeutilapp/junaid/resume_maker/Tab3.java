@@ -6,14 +6,48 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
 
-public class Tab3 extends Fragment {
+import java.util.ArrayList;
+
+public class Tab3 extends Fragment implements emphistory_dialog.DialogListener {
+
+    View v;
+    Button add_emp;
+    ListView emphistory;
+    ArrayList<ArrayList<String>> emphistory_list=new ArrayList<>(3);
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        //Returning the layout file after inflating
-        //Change R.layout.tab1 in you classes
-        return inflater.inflate(R.layout.tab3, container, false);
+        v=inflater.inflate(R.layout.tab3, container, false);
+
+        add_emp=v.findViewById(R.id.add_emp);
+        add_emp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                open_dialog();
+
+            }
+        });
+
+        return v;
+    }
+
+    public void open_dialog(){
+
+        emphistory_dialog emphistoryDialog=new emphistory_dialog();
+        emphistoryDialog.show(getFragmentManager(),"Add employment details");
+
+    }
+
+    @Override
+    public void getinputdata(String compay_name, String time_period,String role_in_company){
+
+
+
     }
 
 }

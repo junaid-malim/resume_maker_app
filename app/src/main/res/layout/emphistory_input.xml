@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <EditText
+        android:id="@+id/company_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Company Name"/>
+
+    <EditText
+        android:id="@+id/time_period_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Time Period"/>
+
+    <EditText
+        android:id="@+id/role_in_company_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Role in the Company"/>
+
+
+</LinearLayout>
