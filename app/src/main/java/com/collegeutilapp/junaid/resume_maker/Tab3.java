@@ -1,8 +1,11 @@
 package com.collegeutilapp.junaid.resume_maker;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +18,19 @@ public class Tab3 extends Fragment implements emphistory_dialog.DialogListener {
 
     View v;
     Button add_emp;
-    ListView emphistory;
+    RecyclerView emphistory;
     ArrayList<ArrayList<String>> emphistory_list=new ArrayList<>(3);
-
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         v=inflater.inflate(R.layout.tab3, container, false);
+
+        sp= this.getActivity().getSharedPreferences("infosavepref", Context.MODE_PRIVATE);
+
+        editor = sp.edit();
+
 
         add_emp=v.findViewById(R.id.add_emp);
         add_emp.setOnClickListener(new View.OnClickListener() {
@@ -39,15 +48,16 @@ public class Tab3 extends Fragment implements emphistory_dialog.DialogListener {
     public void open_dialog(){
 
         emphistory_dialog emphistoryDialog=new emphistory_dialog();
-        emphistoryDialog.show(getFragmentManager(),"Add employment details");
+        if (getFragmentManager() != null) {
+            emphistoryDialog.show(getFragmentManager(),"Add employment details");
+        }
 
     }
 
     @Override
-    public void getinputdata(String compay_name, String time_period,String role_in_company){
+    public void getinputdata(String company_name, String time_period, String role_in_company) {
 
-
+        editor.putString("lol0","lol"+company_name+time_period+role_in_company);
 
     }
-
 }

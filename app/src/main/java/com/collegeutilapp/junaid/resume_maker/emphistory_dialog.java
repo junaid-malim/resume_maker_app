@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +16,12 @@ public class emphistory_dialog extends AppCompatDialogFragment {
     EditText company_name_input;
     EditText time_period_input;
     EditText role_in_company_input;
+    String company_name;
+    String time_period;
+    String role_in_company;
     DialogListener listener;
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -34,9 +39,10 @@ public class emphistory_dialog extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                String company_name=company_name_input.getText().toString();
-                String time_period=time_period_input.getText().toString();
-                String role_in_company=role_in_company_input.getText().toString();
+
+                company_name = company_name_input.getText().toString();
+                time_period = time_period_input.getText().toString();
+                role_in_company = role_in_company_input.getText().toString();
 
                 listener.getinputdata(company_name,time_period,role_in_company);
 
@@ -51,21 +57,26 @@ public class emphistory_dialog extends AppCompatDialogFragment {
 
     }
 
-    public interface DialogListener {
-        void getinputdata(String compay_name, String time_period,String role_in_company);
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        try{
-            listener=(DialogListener) context;
-        }catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() +
-                    "must implement DialogListener");
-        }
+        listener=(DialogListener) context;
+    }
 
+    public interface DialogListener {
+        void getinputdata(String company_name, String time_period,String role_in_company);
+    }
 
+    public String getCompany_name() {
+        return company_name;
+    }
+
+    public String getTime_period() {
+        return time_period;
+    }
+
+    public String getRole_in_company() {
+        return role_in_company;
     }
 }

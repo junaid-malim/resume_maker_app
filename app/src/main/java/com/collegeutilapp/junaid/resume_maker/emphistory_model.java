@@ -14,7 +14,7 @@ public class emphistory_model {
 
     }
 
-    public String serialized(){
+    public String serialize(){
 
         Gson gson=new Gson();
 
