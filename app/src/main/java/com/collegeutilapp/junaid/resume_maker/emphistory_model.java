@@ -1,5 +1,9 @@
 package com.collegeutilapp.junaid.resume_maker;
 
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
+
 import com.google.gson.Gson;
 
 public class emphistory_model {
@@ -29,4 +33,18 @@ public class emphistory_model {
 
     }
 
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+
+        TextView company_name,time_period,role_in_company;
+
+        public MyViewHolder(View view){
+            super(view);
+
+            company_name=view.findViewById(R.id.company_name);
+            time_period=view.findViewById(R.id.time_period);
+            role_in_company=view.findViewById(R.id.role_in_company);
+
+        }
+
+    }
 }

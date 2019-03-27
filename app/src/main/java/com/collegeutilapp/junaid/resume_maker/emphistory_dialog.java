@@ -19,7 +19,8 @@ public class emphistory_dialog extends AppCompatDialogFragment {
     String company_name;
     String time_period;
     String role_in_company;
-    DialogListener listener;
+    //TODO listener is plan 2
+    //DialogListener listener;
 
     @NonNull
     @Override
@@ -44,7 +45,9 @@ public class emphistory_dialog extends AppCompatDialogFragment {
                 time_period = time_period_input.getText().toString();
                 role_in_company = role_in_company_input.getText().toString();
 
-                listener.getinputdata(company_name,time_period,role_in_company);
+                //listener.getinputdata(company_name,time_period,role_in_company);
+
+
 
             }
         });
@@ -61,13 +64,13 @@ public class emphistory_dialog extends AppCompatDialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        listener=(DialogListener) context;
+        //listener=(DialogListener) context;
     }
-
+/*
     public interface DialogListener {
         void getinputdata(String company_name, String time_period,String role_in_company);
     }
-
+*/
     public String getCompany_name() {
         return company_name;
     }

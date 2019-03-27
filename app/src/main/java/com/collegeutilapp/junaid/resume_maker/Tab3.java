@@ -14,7 +14,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class Tab3 extends Fragment implements emphistory_dialog.DialogListener {
+public class Tab3 extends Fragment {
 
     View v;
     Button add_emp;
@@ -53,11 +53,12 @@ public class Tab3 extends Fragment implements emphistory_dialog.DialogListener {
         }
 
     }
-
+/*
     @Override
     public void getinputdata(String company_name, String time_period, String role_in_company) {
 
         editor.putString("lol0","lol"+company_name+time_period+role_in_company);
 
     }
+*/
 }
