@@ -1,7 +1,6 @@
 package com.collegeutilapp.junaid.resume_maker;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -72,7 +71,7 @@ public class add_data_to_fbase {
 
     }
 
-    public void setskills(final Context context, int count, String skill){
+    public void setskills(final Context context, String skill){
 
         DatabaseReference databaseReferencelcl=FirebaseDatabase.getInstance().getReference("capability").child("skills");
 
@@ -118,8 +117,7 @@ public class add_data_to_fbase {
             int index = (int) (rnd.nextFloat() * SALTCHARS.length());
             salt.append(SALTCHARS.charAt(index));
         }
-        String saltStr = salt.toString();
-        return saltStr;
+        return salt.toString();
 
     }
 
