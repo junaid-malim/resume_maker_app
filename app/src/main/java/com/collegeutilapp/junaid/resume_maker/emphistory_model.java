@@ -4,8 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
 public class emphistory_model {
 
     String company,time,role;
@@ -18,33 +16,31 @@ public class emphistory_model {
 
     }
 
-    public String serialize(){
-
-        Gson gson=new Gson();
-
-        return gson.toJson(this);
+    public emphistory_model() {
     }
 
-    public emphistory_model create(String serialdata){
-
-        Gson gson=new Gson();
-
-        return gson.fromJson(serialdata,emphistory_model.class);
-
+    public String getCompany() {
+        return company;
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public void setCompany(String company) {
+        this.company = company;
+    }
 
-        TextView company_name,time_period,role_in_company;
+    public String getTime() {
+        return time;
+    }
 
-        public MyViewHolder(View view){
-            super(view);
+    public void setTime(String time) {
+        this.time = time;
+    }
 
-            company_name=view.findViewById(R.id.company_name);
-            time_period=view.findViewById(R.id.time_period);
-            role_in_company=view.findViewById(R.id.role_in_company);
+    public String getRole() {
+        return role;
+    }
 
-        }
-
+    public void setRole(String role) {
+        this.role = role;
     }
 }
+

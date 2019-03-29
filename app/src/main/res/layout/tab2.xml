@@ -64,6 +64,9 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:minWidth="60dp"
+        android:hint="TOTAL"
+        android:inputType="numberDecimal"
+        android:maxLength="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gradtotal" />
 
@@ -74,6 +77,9 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:minWidth="60dp"
+        android:hint="TOTAL"
+        android:inputType="numberDecimal"
+        android:maxLength="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grade12total" />
 
@@ -84,6 +90,9 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:minWidth="60dp"
+        android:hint="TOTAL"
+        android:inputType="numberDecimal"
+        android:maxLength="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grade10total" />
 
@@ -91,9 +100,12 @@
         android:id="@+id/grade10total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:minWidth="60dp"
+        android:hint="TOTAL"
+        android:inputType="numberDecimal"
+        android:maxLength="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -103,6 +115,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:minWidth="60dp"
+        android:hint="SCORED"
+        android:inputType="numberDecimal"
+        android:maxLength="3"
         app:layout_constraintBottom_toBottomOf="@+id/textView14"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textView14" />
@@ -112,10 +127,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:hint="SCORED"
+        android:inputType="numberDecimal"
+        android:maxLength="3"
         android:minWidth="60dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView13"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/textView13" />
+        app:layout_constraintTop_toTopOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.6" />
 
     <EditText
         android:id="@+id/grade12scored"
@@ -123,6 +142,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:minWidth="60dp"
+        android:hint="SCORED"
+        android:inputType="numberDecimal"
+        android:maxLength="3"
         app:layout_constraintBottom_toBottomOf="@+id/textView12"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textView12" />
@@ -132,12 +154,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:hint="SCORED"
         android:minWidth="60dp"
+        android:inputType="numberDecimal"
+        android:maxLength="3"
         app:layout_constraintBottom_toBottomOf="@+id/textView11"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/textView11" >
+        app:layout_constraintTop_toTopOf="@+id/textView11">
 
-        <requestFocus/>
+        <requestFocus />
     </EditText>
 
     <TextView
@@ -200,23 +225,13 @@
         app:layout_constraintGuide_begin="169dp" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
         android:id="@+id/savebutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

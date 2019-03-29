@@ -67,4 +67,13 @@ public class Adds_details extends AppCompatActivity implements TabLayout.OnTabSe
     public void onTabReselected(TabLayout.Tab tab) {
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        add_data_to_fbase fbase=new add_data_to_fbase();
+        fbase.startnew();
+
+    }
 }

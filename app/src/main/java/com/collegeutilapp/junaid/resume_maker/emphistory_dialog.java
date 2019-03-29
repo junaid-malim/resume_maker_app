@@ -13,14 +13,8 @@ import android.widget.EditText;
 
 public class emphistory_dialog extends AppCompatDialogFragment {
 
-    EditText company_name_input;
-    EditText time_period_input;
-    EditText role_in_company_input;
-    String company_name;
-    String time_period;
-    String role_in_company;
-    //TODO listener is plan 2
-    //DialogListener listener;
+    EditText company_name_input,time_period_input,role_in_company_input;
+    String company_name,time_period,role_in_company;
 
     @NonNull
     @Override
@@ -45,8 +39,6 @@ public class emphistory_dialog extends AppCompatDialogFragment {
                 time_period = time_period_input.getText().toString();
                 role_in_company = role_in_company_input.getText().toString();
 
-                //listener.getinputdata(company_name,time_period,role_in_company);
-
                 add_data_to_fbase fbase=new add_data_to_fbase();
                 fbase.setemphistory(getContext(),company_name,time_period,role_in_company);
 
@@ -66,22 +58,5 @@ public class emphistory_dialog extends AppCompatDialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        //listener=(DialogListener) context;
-    }
-/*
-    public interface DialogListener {
-        void getinputdata(String company_name, String time_period,String role_in_company);
-    }
-*/
-    public String getCompany_name() {
-        return company_name;
-    }
-
-    public String getTime_period() {
-        return time_period;
-    }
-
-    public String getRole_in_company() {
-        return role_in_company;
     }
 }

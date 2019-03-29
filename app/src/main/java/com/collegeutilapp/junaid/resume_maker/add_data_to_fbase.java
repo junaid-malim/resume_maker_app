@@ -44,10 +44,10 @@ public class add_data_to_fbase {
         databaseReferencelcl.child("totalgrad").setValue(gradtotal);
         databaseReferencelcl.child("scoredpost").setValue(postgradscored);
         databaseReferencelcl.child("totalpost").setValue(postgradtotal);
-        databaseReferencelcl.child("percent10").setValue(percent10);
-        databaseReferencelcl.child("percent12").setValue(percent12);
-        databaseReferencelcl.child("percentgrad").setValue(percentgrad);
-        databaseReferencelcl.child("percentpost").setValue(percentpost).addOnSuccessListener(new OnSuccessListener<Void>() {
+        databaseReferencelcl.child("percent10").setValue(percent10+"%");
+        databaseReferencelcl.child("percent12").setValue(percent12+"%");
+        databaseReferencelcl.child("percentgrad").setValue(percentgrad+"%");
+        databaseReferencelcl.child("percentpost").setValue(percentpost+"%").addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(context,"DATA INSERTED SUCCESSFULY",Toast.LENGTH_LONG).show();
@@ -62,7 +62,7 @@ public class add_data_to_fbase {
         String sltstr=getSaltString();
         databaseReferencelcl.child("job"+sltstr).child("company_name").setValue(companyname);
         databaseReferencelcl.child("job"+sltstr).child("time_period").setValue(timeperiod);
-        databaseReferencelcl.child("job"+sltstr).child("role_n_company").setValue(roleincompany).addOnSuccessListener(new OnSuccessListener<Void>() {
+        databaseReferencelcl.child("job"+sltstr).child("role_in_company").setValue(roleincompany).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(context,"DATA INSERTED SUCCESSFULY",Toast.LENGTH_LONG).show();
@@ -118,6 +118,13 @@ public class add_data_to_fbase {
             salt.append(SALTCHARS.charAt(index));
         }
         return salt.toString();
+
+    }
+
+    public void startnew(){
+
+        DatabaseReference databaseReferencelcl=FirebaseDatabase.getInstance().getReference().getRoot();
+        databaseReferencelcl.removeValue();
 
     }
 
