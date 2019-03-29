@@ -11,11 +11,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Tab2 extends Fragment {
 
     EditText grade10total,grade10scored,grade12total,grade12scored,gradtotal,gradscored,postgradtotal,postgradscored;
     View v;
-    SharedPreferences sp;
     float score10,total10,score12,total12,scoregrad,totalgrad,scorepost,totalpost;
     String percent10,percent12,percentgrad,percentpostgrad;
     Button savebutton;
@@ -26,9 +27,6 @@ public class Tab2 extends Fragment {
         //Returning the layout file after inflating
         //Change R.layout.tab1 in you classes
 
-        sp= this.getActivity().getSharedPreferences("infosavepref", Context.MODE_PRIVATE);
-
-        final SharedPreferences.Editor editor=sp.edit();
         savebutton=v.findViewById(R.id.savebutton);
 
         grade10scored=v.findViewById(R.id.grade10scored);
@@ -43,6 +41,7 @@ public class Tab2 extends Fragment {
         savebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 editor.putString("grade10scored",grade10scored.getText().toString());
                 editor.putString("grade10total",grade10total.getText().toString());
                 editor.putString("grade12scored",grade12scored.getText().toString());
@@ -51,6 +50,7 @@ public class Tab2 extends Fragment {
                 editor.putString("gradtotal",gradtotal.getText().toString());
                 editor.putString("postgradscored",postgradscored.getText().toString());
                 editor.putString("postgradtotal",postgradtotal.getText().toString());
+                */
 
                 score10=Float.parseFloat(grade10scored.getText().toString());
                 score12=Float.parseFloat(grade12scored.getText().toString());
@@ -66,10 +66,29 @@ public class Tab2 extends Fragment {
                 percentgrad=String.valueOf(getpercent(scoregrad,totalgrad));
                 percentpostgrad=String.valueOf(getpercent(scorepost,totalpost));
 
+                /*
                 editor.putString("percent10",percent10);
                 editor.putString("percent12",percent12);
                 editor.putString("percentgrad",percentgrad);
                 editor.putString("percentpostgrad",percentgrad);
+                */
+
+                add_data_to_fbase fbase=new add_data_to_fbase();
+                fbase.seteducation_details(
+                        getContext(),
+                        String.valueOf(score10),
+                        String.valueOf(total10),
+                        String.valueOf(score12),
+                        String.valueOf(total12),
+                        String.valueOf(scoregrad),
+                        String.valueOf(totalgrad),
+                        String.valueOf(scorepost),
+                        String.valueOf(totalpost),
+                        percent10,
+                        percent12,
+                        percentgrad,
+                        percentpostgrad);
+
             }
         });
 

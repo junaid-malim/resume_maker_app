@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 public class Tab4 extends Fragment {
 
+
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         //Returning the layout file after inflating

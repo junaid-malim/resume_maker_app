@@ -31,6 +31,7 @@ public class emphistory_dialog extends AppCompatDialogFragment {
         LayoutInflater inflater=getActivity().getLayoutInflater();
         View view=inflater.inflate(R.layout.emphistory_input,null);
 
+
         builder.setTitle("Add previous job Details").setView(view).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -40,13 +41,14 @@ public class emphistory_dialog extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-
                 company_name = company_name_input.getText().toString();
                 time_period = time_period_input.getText().toString();
                 role_in_company = role_in_company_input.getText().toString();
 
                 //listener.getinputdata(company_name,time_period,role_in_company);
 
+                add_data_to_fbase fbase=new add_data_to_fbase();
+                fbase.setemphistory(getContext(),company_name,time_period,role_in_company);
 
 
             }

@@ -11,14 +11,16 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Objects;
 
 public class Tab1 extends Fragment {
 
-    EditText nameet,phet,addresset,mailet;
-    String name,phoneno,address,mail;
+    EditText nameet,phet,addresset,mailet,prodi;
+    String name,phoneno,address,mail,proditxt;
     View v;
-    SharedPreferences sp;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -26,14 +28,11 @@ public class Tab1 extends Fragment {
         //Returning the layout file after inflating
         //Change R.layout.tab1 in you classes
 
-        sp= (getContext().getSharedPreferences("infosavepref", Context.MODE_PRIVATE));
-
-        final SharedPreferences.Editor editor=sp.edit();
-
         nameet=v.findViewById(R.id.nameet);
         phet=v.findViewById(R.id.phet);
         mailet=v.findViewById(R.id.mailet);
         addresset=v.findViewById(R.id.mailet);
+        prodi=v.findViewById(R.id.prodi);
 
         v.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,20 +41,18 @@ public class Tab1 extends Fragment {
                 phoneno="+91"+phet.getText().toString();
                 mail=mailet.getText().toString();
                 address=addresset.getText().toString();
+                proditxt=prodi.getText().toString();
 
                 if(name.equals("") || phoneno.equals("") || mail.equals("+91") || address.equals("")){
                     Toast.makeText(getContext(),"Please Enter All Details",Toast.LENGTH_LONG).show();
                 }
 
-                editor.putString("name",name);
-                editor.putString("phoneno",phoneno);
-                editor.putString("mail",mail);
-                editor.putString("address",address);
-                editor.apply();
+                add_data_to_fbase fbase=new add_data_to_fbase();
+                fbase.setpersonal_details(getContext(),name,phoneno,mail,address,proditxt);
 
             }
         });
-        //TODO store in shared prefs
+
 
 
         return v;
