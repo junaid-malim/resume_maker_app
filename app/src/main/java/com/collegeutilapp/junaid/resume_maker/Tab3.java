@@ -1,7 +1,5 @@
 package com.collegeutilapp.junaid.resume_maker;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,15 +25,15 @@ public class Tab3 extends Fragment {
     View v;
     Button add_emp;
     RecyclerView emphistory;
-    ArrayList<ArrayList<String>> emphistory_list=new ArrayList<>(3);
-    DatabaseReference refrence= FirebaseDatabase.getInstance().getReference("employment_history");
-    FirebaseRecyclerAdapter<emphistory_model,ViewHolder> firebaseRecyclerAdapter;
+    ArrayList<ArrayList<String>> emphistory_list = new ArrayList<>(3);
+    DatabaseReference refrence = FirebaseDatabase.getInstance().getReference("employment_history");
+    FirebaseRecyclerAdapter<emphistory_model, ViewHolder> firebaseRecyclerAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        v=inflater.inflate(R.layout.tab3, container, false);
+        v = inflater.inflate(R.layout.tab3, container, false);
 
-        add_emp=v.findViewById(R.id.add_emp);
+        add_emp = v.findViewById(R.id.add_emp);
         add_emp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,11 +52,11 @@ public class Tab3 extends Fragment {
         return v;
     }
 
-    public void open_dialog(){
+    public void open_dialog() {
 
-        emphistory_dialog emphistoryDialog=new emphistory_dialog();
+        emphistory_dialog emphistoryDialog = new emphistory_dialog();
         if (getFragmentManager() != null) {
-            emphistoryDialog.show(getFragmentManager(),"Add employment details");
+            emphistoryDialog.show(getFragmentManager(), "Add employment details");
         }
 
     }
@@ -69,12 +67,11 @@ public class Tab3 extends Fragment {
     public void onStart() {
         super.onStart();
 
-
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<emphistory_model, ViewHolder>(emphistory_model.class,R.layout.emp_history_item,ViewHolder.class,refrence) {
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<emphistory_model, ViewHolder>(emphistory_model.class, R.layout.emp_history_item, ViewHolder.class, refrence) {
             @Override
             protected void populateViewHolder(ViewHolder viewHolder, emphistory_model model, int position) {
 
-                viewHolder.setDetails_emphistory(getContext(),model.getCompany(),model.getTime(),model.getRole());
+                viewHolder.setDetails_emphistory(getContext(), model.getCompany_name(), model.getTime_period(), model.getRole_in_company());
 
             }
 
@@ -87,7 +84,6 @@ public class Tab3 extends Fragment {
         };
 
         emphistory.setAdapter(firebaseRecyclerAdapter);
-
 
         refrence.addChildEventListener(new ChildEventListener() {
             @Override
@@ -116,8 +112,6 @@ public class Tab3 extends Fragment {
             }
         });
 
-        }
-
-
 
     }
+}

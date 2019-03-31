@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
 
-    View mView;
+    private View mView;
 
     public ViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -16,7 +16,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         mView=itemView;
     }
 
-    public void setDetails_emphistory(Context context,String companyname,String timeperiod,String roleincompany){
+    void setDetails_emphistory(Context context, String companyname, String timeperiod, String roleincompany){
 
         TextView company_name,time_period,role_in_company;
 
@@ -30,6 +30,33 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
 
 
+    }
+
+    void setDetail_skill(String skill_ip){
+
+        TextView skill;
+
+        skill=mView.findViewById(R.id.cap_op);
+
+        skill.setText(skill_ip);
+    }
+
+    void setDetail_hobby(String hobby_ip){
+
+        TextView hobby;
+
+        hobby=mView.findViewById(R.id.cap_op);
+
+        hobby.setText(hobby_ip);
+    }
+
+    void setDetail_language(String language_ip){
+
+        TextView language;
+
+        language=mView.findViewById(R.id.cap_op);
+
+        language.setText(language_ip);
     }
 
 }

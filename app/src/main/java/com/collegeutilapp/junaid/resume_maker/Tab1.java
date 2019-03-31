@@ -1,7 +1,5 @@
 package com.collegeutilapp.junaid.resume_maker;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -10,11 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Objects;
 
 public class Tab1 extends Fragment {
 
@@ -45,11 +38,10 @@ public class Tab1 extends Fragment {
 
                 if(name.equals("") || phoneno.equals("") || mail.equals("+91") || address.equals("")){
                     Toast.makeText(getContext(),"Please Enter All Details",Toast.LENGTH_LONG).show();
+                }else {
+                    add_data_to_fbase fbase = new add_data_to_fbase();
+                    fbase.setpersonal_details(getContext(), name, phoneno, mail, address, proditxt);
                 }
-
-                add_data_to_fbase fbase=new add_data_to_fbase();
-                fbase.setpersonal_details(getContext(),name,phoneno,mail,address,proditxt);
-
             }
         });
 

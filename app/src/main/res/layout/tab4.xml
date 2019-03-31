@@ -26,7 +26,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/langs"
         android:layout_width="match_parent"
-        android:layout_height="179dp"
+        android:layout_height="168dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addskill" />
@@ -67,9 +67,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="#00000000"
+        android:src="@drawable/add_document"
+        android:tint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/hobbies"
-        tools:srcCompat="@android:drawable/ic_menu_save" />
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 </android.support.constraint.ConstraintLayout>

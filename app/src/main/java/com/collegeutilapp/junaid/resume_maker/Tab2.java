@@ -1,7 +1,5 @@
 package com.collegeutilapp.junaid.resume_maker;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -10,8 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import com.google.firebase.database.FirebaseDatabase;
+import java.text.DecimalFormat;
 
 public class Tab2 extends Fragment {
 
@@ -51,44 +50,52 @@ public class Tab2 extends Fragment {
                 editor.putString("postgradscored",postgradscored.getText().toString());
                 editor.putString("postgradtotal",postgradtotal.getText().toString());
                 */
+if (!grade10scored.getText().toString().isEmpty()||
+        !grade12scored.getText().toString().isEmpty()||
+        !gradscored.getText().toString().isEmpty()||
+        !postgradscored.getText().toString().isEmpty()||
+        !grade10total.getText().toString().isEmpty()||
+        !grade12total.getText().toString().isEmpty()||
+        !gradtotal.getText().toString().isEmpty()||
+        !postgradtotal.getText().toString().isEmpty()) {
+    score10 = Float.parseFloat(grade10scored.getText().toString());
+    score12 = Float.parseFloat(grade12scored.getText().toString());
+    total10 = Float.parseFloat(grade10total.getText().toString());
+    total12 = Float.parseFloat(grade12total.getText().toString());
+    scoregrad = Float.parseFloat(gradscored.getText().toString());
+    totalgrad = Float.parseFloat(gradtotal.getText().toString());
+    scorepost = Float.parseFloat(postgradscored.getText().toString());
+    totalpost = Float.parseFloat(postgradtotal.getText().toString());
 
-                score10=Float.parseFloat(grade10scored.getText().toString());
-                score12=Float.parseFloat(grade12scored.getText().toString());
-                total10=Float.parseFloat(grade10total.getText().toString());
-                total12=Float.parseFloat(grade12total.getText().toString());
-                scoregrad=Float.parseFloat(gradscored.getText().toString());
-                totalgrad=Float.parseFloat(gradtotal.getText().toString());
-                scorepost=Float.parseFloat(postgradscored.getText().toString());
-                totalpost=Float.parseFloat(postgradtotal.getText().toString());
+    percent10 = String.valueOf(getpercent(score10, total10));
+    percent12 = String.valueOf(getpercent(score12, total12));
+    percentgrad = String.valueOf(getpercent(scoregrad, totalgrad));
+    percentpostgrad = String.valueOf(getpercent(scorepost, totalpost));
 
-                percent10=String.valueOf(getpercent(score10,total10));
-                percent12=String.valueOf(getpercent(score12,total12));
-                percentgrad=String.valueOf(getpercent(scoregrad,totalgrad));
-                percentpostgrad=String.valueOf(getpercent(scorepost,totalpost));
-
+    add_data_to_fbase fbase = new add_data_to_fbase();
+    fbase.seteducation_details(
+            getContext(),
+            String.valueOf(score10),
+            String.valueOf(total10),
+            String.valueOf(score12),
+            String.valueOf(total12),
+            String.valueOf(scoregrad),
+            String.valueOf(totalgrad),
+            String.valueOf(scorepost),
+            String.valueOf(totalpost),
+            percent10,
+            percent12,
+            percentgrad,
+            percentpostgrad);
+            }else {
+    Toast.makeText(getContext(),"YOU SHALL FILL ALL THE DETAILS",Toast.LENGTH_LONG).show();
+}
                 /*
                 editor.putString("percent10",percent10);
                 editor.putString("percent12",percent12);
                 editor.putString("percentgrad",percentgrad);
                 editor.putString("percentpostgrad",percentgrad);
                 */
-
-                add_data_to_fbase fbase=new add_data_to_fbase();
-                fbase.seteducation_details(
-                        getContext(),
-                        String.valueOf(score10),
-                        String.valueOf(total10),
-                        String.valueOf(score12),
-                        String.valueOf(total12),
-                        String.valueOf(scoregrad),
-                        String.valueOf(totalgrad),
-                        String.valueOf(scorepost),
-                        String.valueOf(totalpost),
-                        percent10,
-                        percent12,
-                        percentgrad,
-                        percentpostgrad);
-
             }
         });
 
@@ -97,7 +104,8 @@ public class Tab2 extends Fragment {
 
     public float getpercent(float scored,float total){
 
-        return ( scored * 100f )/ total;
+        DecimalFormat df = new DecimalFormat("###.##");
+        return Float.parseFloat(df.format((scored * 100f )/ total));
 
     }
 

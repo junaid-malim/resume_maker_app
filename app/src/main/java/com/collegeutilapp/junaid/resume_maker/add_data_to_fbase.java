@@ -75,7 +75,7 @@ public class add_data_to_fbase {
 
         DatabaseReference databaseReferencelcl=FirebaseDatabase.getInstance().getReference("capability").child("skills");
 
-        databaseReferencelcl.child("skill"+getSaltString()).setValue(skill).addOnSuccessListener(new OnSuccessListener<Void>() {
+        databaseReferencelcl.child("skill"+getSaltString()).child("skill").setValue(skill).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(context,"DATA INSERTED SUCCESSFULY",Toast.LENGTH_LONG).show();
@@ -88,7 +88,7 @@ public class add_data_to_fbase {
 
         DatabaseReference databaseReferencelcl=FirebaseDatabase.getInstance().getReference("capability").child("hobbies");
 
-        databaseReferencelcl.child("hobby"+getSaltString()).setValue(hobby).addOnSuccessListener(new OnSuccessListener<Void>() {
+        databaseReferencelcl.child("hobby"+getSaltString()).child("hobby").setValue(hobby).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(context,"DATA INSERTED SUCCESSFULY",Toast.LENGTH_LONG).show();
@@ -101,7 +101,7 @@ public class add_data_to_fbase {
 
         DatabaseReference databaseReferencelcl=FirebaseDatabase.getInstance().getReference("capability").child("languages");
 
-        databaseReferencelcl.child("language"+getSaltString()).setValue(lang).addOnSuccessListener(new OnSuccessListener<Void>() {
+        databaseReferencelcl.child("language"+getSaltString()).child("language").setValue(lang).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(context,"DATA INSERTED SUCCESSFULY",Toast.LENGTH_LONG).show();

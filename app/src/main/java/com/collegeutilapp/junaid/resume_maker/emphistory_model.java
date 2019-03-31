@@ -1,46 +1,42 @@
 package com.collegeutilapp.junaid.resume_maker;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.TextView;
-
 public class emphistory_model {
 
-    String company,time,role;
+    private String company_name,time_period,role_in_company;
 
-    public emphistory_model(String company,String time,String role) {
+    public emphistory_model(String company_name,String time_period,String role_in_company) {
 
-        this.company=company;
-        this.time=time;
-        this.role=role;
+        this.company_name=company_name;
+        this.time_period=time_period;
+        this.role_in_company=role_in_company;
 
     }
 
     public emphistory_model() {
     }
 
-    public String getCompany() {
-        return company;
+    public String getCompany_name() {
+        return company_name;
     }
 
-    public void setCompany(String company) {
-        this.company = company;
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
     }
 
-    public String getTime() {
-        return time;
+    public String getTime_period() {
+        return time_period;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setTime_period(String time_period) {
+        this.time_period = time_period;
     }
 
-    public String getRole() {
-        return role;
+    public String getRole_in_company() {
+        return role_in_company;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRole_in_company(String role_in_company) {
+        this.role_in_company = role_in_company;
     }
 }
 

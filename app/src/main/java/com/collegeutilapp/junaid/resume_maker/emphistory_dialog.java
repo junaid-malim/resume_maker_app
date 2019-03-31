@@ -10,11 +10,12 @@ import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class emphistory_dialog extends AppCompatDialogFragment {
 
-    EditText company_name_input,time_period_input,role_in_company_input;
-    String company_name,time_period,role_in_company;
+    EditText company_name_input,time_period_input_yr,time_period_input_mnt,role_in_company_input;
+    String company_name,time_period_yr,time_period_mnt,role_in_company;
 
     @NonNull
     @Override
@@ -35,19 +36,24 @@ public class emphistory_dialog extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                company_name = company_name_input.getText().toString();
-                time_period = time_period_input.getText().toString();
-                role_in_company = role_in_company_input.getText().toString();
+                if(!company_name_input.getText().toString().isEmpty()||!time_period_input_yr.getText().toString().isEmpty()||!time_period_input_mnt.getText().toString().isEmpty()||!role_in_company_input.getText().toString().isEmpty()) {
+                    company_name = company_name_input.getText().toString();
+                    time_period_yr = time_period_input_yr.getText().toString();
+                    time_period_mnt=time_period_input_mnt.getText().toString();
+                    role_in_company = role_in_company_input.getText().toString();
 
-                add_data_to_fbase fbase=new add_data_to_fbase();
-                fbase.setemphistory(getContext(),company_name,time_period,role_in_company);
-
+                    add_data_to_fbase fbase = new add_data_to_fbase();
+                    fbase.setemphistory(getContext(), company_name, time_period_yr+" YEARS and "+time_period_mnt+"MONTHS", role_in_company);
+                }else {
+                    Toast.makeText(getContext(),"ENTER ALL DETAILS",Toast.LENGTH_LONG).show();
+                }
 
             }
         });
 
         company_name_input = view.findViewById(R.id.company_name_input);
-        time_period_input = view.findViewById(R.id.time_period_input);
+        time_period_input_yr = view.findViewById(R.id.time_period_input_yr);
+        time_period_input_mnt=view.findViewById(R.id.time_period_input_mnt);
         role_in_company_input = view.findViewById(R.id.role_in_company_input);
 
         return builder.create();
