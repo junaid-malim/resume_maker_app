@@ -3,6 +3,7 @@
     package="com.collegeutilapp.junaid.resume_maker">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".final_screen"></activity>
-        <activity android:name=".Adds_details">
+        <activity android:name=".Adds_details"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

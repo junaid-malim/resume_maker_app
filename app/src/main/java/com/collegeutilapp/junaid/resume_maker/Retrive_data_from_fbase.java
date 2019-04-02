@@ -9,7 +9,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////DISCARDED CLASS/////////////////DISCARDED CLASS/////////////////////DISCARDED CLASS//////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public class Retrive_data_from_fbase {
 
@@ -26,7 +29,7 @@ public class Retrive_data_from_fbase {
 
     Retrive_data_from_fbase() {
 
-        DatabaseReference personaldb = FirebaseDatabase.getInstance().getReference("personal_details");
+        DatabaseReference personaldb =FirebaseDatabase.getInstance().getReference("personal_details");
         personaldb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

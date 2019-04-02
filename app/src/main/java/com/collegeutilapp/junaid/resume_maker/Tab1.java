@@ -2,11 +2,13 @@ package com.collegeutilapp.junaid.resume_maker;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TabHost;
 import android.widget.Toast;
 
 public class Tab1 extends Fragment {
@@ -42,6 +44,8 @@ public class Tab1 extends Fragment {
                     add_data_to_fbase fbase = new add_data_to_fbase();
                     fbase.setpersonal_details(getContext(), name, phoneno, mail, address, proditxt);
                 }
+
+
             }
         });
 

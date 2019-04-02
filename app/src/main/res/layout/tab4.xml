@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/skills"
@@ -11,17 +12,20 @@
         android:layout_height="179dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorPrimary"/>
 
     <Button
         android:id="@+id/addskill"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add SKILL"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/skills" />
+        app:layout_constraintTop_toBottomOf="@+id/skills"
+        android:background="@drawable/button_style"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/langs"
@@ -29,16 +33,19 @@
         android:layout_height="168dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addskill" />
+        app:layout_constraintTop_toBottomOf="@+id/addskill"
+        android:background="@color/colorPrimary"/>
 
     <Button
         android:id="@+id/addlangs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ADD LANGUAGE"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/langs" />
+        app:layout_constraintTop_toBottomOf="@+id/langs"
+        android:background="@drawable/button_style"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/hobbies"
@@ -47,7 +54,8 @@
         android:layout_marginStart="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addlangs" />
+        app:layout_constraintTop_toBottomOf="@+id/addlangs"
+        android:background="@color/colorPrimary"/>
 
     <Button
         android:id="@+id/addhobby"
@@ -56,9 +64,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="ADD HOBBY"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hobbies" />
+        app:layout_constraintTop_toBottomOf="@+id/hobbies"
+        android:background="@drawable/button_style"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/startgenratingpdf"
