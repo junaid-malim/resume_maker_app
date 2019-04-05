@@ -10,7 +10,8 @@ import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.valdesekamdem.library.mdtoast.MDToast;
 
 public class emphistory_dialog extends AppCompatDialogFragment {
 
@@ -35,8 +36,7 @@ public class emphistory_dialog extends AppCompatDialogFragment {
         }).setPositiveButton("ADD", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
-                if(!company_name_input.getText().toString().isEmpty()||!time_period_input_yr.getText().toString().isEmpty()||!time_period_input_mnt.getText().toString().isEmpty()||!role_in_company_input.getText().toString().isEmpty()) {
+                if(Integer.parseInt(time_period_input_mnt.getText().toString())<12||!company_name_input.getText().toString().isEmpty()||!time_period_input_yr.getText().toString().isEmpty()||!time_period_input_mnt.getText().toString().isEmpty()||!role_in_company_input.getText().toString().isEmpty()) {
                     company_name = company_name_input.getText().toString();
                     time_period_yr = time_period_input_yr.getText().toString();
                     time_period_mnt=time_period_input_mnt.getText().toString();
@@ -45,7 +45,7 @@ public class emphistory_dialog extends AppCompatDialogFragment {
                     add_data_to_fbase fbase = new add_data_to_fbase();
                     fbase.setemphistory(getContext(), company_name, time_period_yr+" YEARS and "+time_period_mnt+"MONTHS", role_in_company);
                 }else {
-                    Toast.makeText(getContext(),"ENTER ALL DETAILS",Toast.LENGTH_LONG).show();
+                    MDToast.makeText(getActivity(),"ENTER ALL DETAILS",MDToast.LENGTH_LONG,MDToast.TYPE_ERROR).show();
                 }
 
             }

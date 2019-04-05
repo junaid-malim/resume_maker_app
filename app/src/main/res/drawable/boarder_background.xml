@@ -12,7 +12,7 @@
         android:top="3dp"
         />
     <stroke android:width="2dp"
-        android:color="#ff00ffff"
+        android:color="@color/colorAccent"
          />
 
 </shape>

@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
+import com.valdesekamdem.library.mdtoast.MDToast;
+
 public class hobby_dialog extends AppCompatDialogFragment {
 
     EditText item_input;
@@ -35,10 +37,12 @@ public class hobby_dialog extends AppCompatDialogFragment {
         }).setPositiveButton("ADD", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
-            add_data_to_fbase fbase=new add_data_to_fbase();
-            fbase.sethobbies(getContext(),item_input.getText().toString());
-
+            if(!item_input.getText().toString().isEmpty()) {
+                add_data_to_fbase fbase = new add_data_to_fbase();
+                fbase.sethobbies(getContext(), item_input.getText().toString());
+            }else {
+                MDToast.makeText(getActivity(),"YOU LEFT IT BLANK",MDToast.LENGTH_LONG,MDToast.TYPE_ERROR).show();
+            }
             }
         });
 

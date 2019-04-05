@@ -8,7 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.valdesekamdem.library.mdtoast.MDToast;
 
 import java.text.DecimalFormat;
 
@@ -50,13 +51,13 @@ public class Tab2 extends Fragment {
                 editor.putString("postgradscored",postgradscored.getText().toString());
                 editor.putString("postgradtotal",postgradtotal.getText().toString());
                 */
-if (!grade10scored.getText().toString().isEmpty()||
-        !grade12scored.getText().toString().isEmpty()||
-        !gradscored.getText().toString().isEmpty()||
-        !postgradscored.getText().toString().isEmpty()||
-        !grade10total.getText().toString().isEmpty()||
-        !grade12total.getText().toString().isEmpty()||
-        !gradtotal.getText().toString().isEmpty()||
+if (!grade10scored.getText().toString().isEmpty()&&
+        !grade12scored.getText().toString().isEmpty()&&
+        !gradscored.getText().toString().isEmpty()&&
+        !postgradscored.getText().toString().isEmpty()&&
+        !grade10total.getText().toString().isEmpty()&&
+        !grade12total.getText().toString().isEmpty()&&
+        !gradtotal.getText().toString().isEmpty()&&
         !postgradtotal.getText().toString().isEmpty()) {
     score10 = Float.parseFloat(grade10scored.getText().toString());
     score12 = Float.parseFloat(grade12scored.getText().toString());
@@ -66,7 +67,7 @@ if (!grade10scored.getText().toString().isEmpty()||
     totalgrad = Float.parseFloat(gradtotal.getText().toString());
     scorepost = Float.parseFloat(postgradscored.getText().toString());
     totalpost = Float.parseFloat(postgradtotal.getText().toString());
-
+if(score10 < total10 && score12 < total12 && scoregrad < totalgrad && scorepost < totalpost) {
     percent10 = String.valueOf(getpercent(score10, total10));
     percent12 = String.valueOf(getpercent(score12, total12));
     percentgrad = String.valueOf(getpercent(scoregrad, totalgrad));
@@ -87,8 +88,11 @@ if (!grade10scored.getText().toString().isEmpty()||
             percent12,
             percentgrad,
             percentpostgrad);
+}else {
+    MDToast.makeText(getActivity(),"Enter Values Correctly",MDToast.LENGTH_LONG,MDToast.TYPE_ERROR).show();
+}
             }else {
-    Toast.makeText(getContext(),"YOU SHALL FILL ALL THE DETAILS",Toast.LENGTH_LONG).show();
+    MDToast.makeText(getActivity(),"YOU SHALL FILL ALL THE DETAILS",MDToast.LENGTH_LONG,MDToast.TYPE_ERROR).show();
 }
                 /*
                 editor.putString("percent10",percent10);

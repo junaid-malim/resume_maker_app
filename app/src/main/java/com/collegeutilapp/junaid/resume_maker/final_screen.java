@@ -1,12 +1,12 @@
 package com.collegeutilapp.junaid.resume_maker;
 
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +24,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.valdesekamdem.library.mdtoast.MDToast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -54,6 +55,7 @@ public class final_screen extends AppCompatActivity {
         setContentView(R.layout.activity_final_screen);
         Button startprocess;
         startprocess=findViewById(R.id.startprocess);
+        final TextView tvpath=findViewById(R.id.pathnametv);
 
         startprocess.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,13 +66,10 @@ public class final_screen extends AppCompatActivity {
                     DateFormat dateFormat = new SimpleDateFormat("yyyymmddhhmms");
 
                     Document document = new Document();
-                    //PdfWriter pdfw = PdfWriter.getInstance(document, new FileOutputStream("PDF" + dateFormat.format(date)));
                     String savepdfto = Environment.getExternalStorageDirectory() + File.separator + "Resume_maker_genrated_PDF" + File.separator;
                     PdfWriter.getInstance(document, new FileOutputStream(savepdfto + "pdf" + dateFormat.format(date) + ".pdf"));
 
                     document.open();
-                    //Retrive_data_from_fbase fbasedata = new Retrive_data_from_fbase();
-
                     //////////////////////
 
                     document.add(new Paragraph("name:- "+name));
@@ -83,28 +82,29 @@ public class final_screen extends AppCompatActivity {
                     table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
                     table.addCell("personal description");
                     table.addCell(personaldesc);
-                    table.setHeaderRows(1);
                     document.add(table);
                     document.add(Chunk.NEWLINE);
 
                     //////////////
 
                     document.add(new Paragraph("Education Details"));
+                    document.add(Chunk.NEWLINE);
                     PdfPTable tbl1 = new PdfPTable(new float[]{1f, 4f});
                     tbl1.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
                     tbl1.addCell("10th standard");
-                    tbl1.addCell("SCORED: " + grade10scored + " out of " + grade10total + " " + percent10);
+                    tbl1.addCell("SCORED: " + grade10scored + " out of " + grade10total + " = " + percent10);
                     tbl1.addCell("12th standard");
-                    tbl1.addCell("SCORED: " + grade12scored + " out of " +grade12total+ " " + percent12);
+                    tbl1.addCell("SCORED: " + grade12scored + " out of " +grade12total+ " = " + percent12);
                     tbl1.addCell("graduation");
-                    tbl1.addCell("SCORED: " + gradscored + " out of " +gradtotal + " " + percentgrad);
+                    tbl1.addCell("SCORED: " + gradscored + " out of " +gradtotal + " = " + percentgrad);
                     tbl1.addCell("post graduation");
-                    tbl1.addCell("SCORED: " +postgradscored + " out of " + postgradtotal + " " +percentpost);
+                    tbl1.addCell("SCORED: " +postgradscored + " out of " + postgradtotal + " = " +percentpost);
                     document.add(tbl1);
 
                     ///////////////////////
 
                     document.add(new Paragraph("Employement History"));
+                    document.add(Chunk.NEWLINE);
                     PdfPTable tbl2 = new PdfPTable(new float[]{2f, 2f, 4f});
                     tbl2.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
                     tbl2.addCell("company name");
@@ -176,13 +176,12 @@ public class final_screen extends AppCompatActivity {
                         list3.add(new ListItem(lcllanguages.get(i)));
                     }
                     document.add(list3);
-                    document.add(Chunk.NEWLINE);
 
                     document.close();
 
 
-                    Toast.makeText(getApplicationContext(),"FILE Saved in:- "+savepdfto,Toast.LENGTH_LONG).show();
-
+                    MDToast.makeText(getApplicationContext(),"FILE Saved in:- "+savepdfto,MDToast.LENGTH_LONG,MDToast.TYPE_ERROR).show();
+                    tvpath.setText("FILE is Saved in:- "+savepdfto);
 
                 } catch (DocumentException e) {
                     e.printStackTrace();
