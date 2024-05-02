@@ -2,6 +2,7 @@ package com.collegeutilapp.junaid.resume_maker;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,6 +30,8 @@ import com.valdesekamdem.library.mdtoast.MDToast;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -66,8 +69,13 @@ public class final_screen extends AppCompatActivity {
                     DateFormat dateFormat = new SimpleDateFormat("yyyymmddhhmms");
 
                     Document document = new Document();
-                    String savepdfto = Environment.getExternalStorageDirectory() + File.separator + "Resume_maker_genrated_PDF" + File.separator;
-                    PdfWriter.getInstance(document, new FileOutputStream(savepdfto + "pdf" + dateFormat.format(date) + ".pdf"));
+                    String savepdfto = Environment.getExternalStorageDirectory() + File.separator + "Resume_maker_generated_PDF" + File.separator;
+                    File savefldr = new File(savepdfto);
+                    if (!savefldr.exists()){
+                        savefldr.mkdir();
+                    }
+                    FileOutputStream fileOutputStream = new FileOutputStream(savepdfto + "pdf" + dateFormat.format(date) + ".pdf");
+                    PdfWriter.getInstance(document, fileOutputStream);
 
                     document.open();
                     //////////////////////
@@ -187,8 +195,10 @@ public class final_screen extends AppCompatActivity {
                     e.printStackTrace();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                }
+            }
         });
 
 

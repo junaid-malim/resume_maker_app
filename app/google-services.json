@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "405723779193",
+    "firebase_url": "https://resume-maker-7213d-default-rtdb.firebaseio.com/",
+    "project_id": "resume-maker-7213d",
+    "storage_bucket": "resume-maker-7213d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405723779193:android:f4f60a48032b9cd1f484a8",
+        "android_client_info": {
+          "package_name": "com.collegeutilapp.junaid.resume_maker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBebRiVehVvTXO4ROY3uceCsgKXZjgxUdA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
